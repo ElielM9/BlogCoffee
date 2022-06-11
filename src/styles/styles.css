@@ -241,7 +241,8 @@ img {
 .nosotros__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 2rem;
+  align-items: center;
+  gap: 3rem;
 }
 
 .nosotros__texto {
