@@ -47,37 +47,63 @@
       <section class="contacto contacto__contenedor">
         <h2 class="contacto__titulo">Contáctanos</h2>
         <div class="contacto__bg"></div>
-        <form action="" class="form">
+        <form id="form" action="" class="form">
           <div class="form__campo">
-            <label for="name" class="form__label">Nombre</label>
+            <label for="name" class="form__label">Nombre:</label>
             <input
-              type="text"
               id="name"
+              type="text"
+              name="nombre"
               placeholder="Escribe tu nombre"
               class="form__field"
             />
           </div>
           <div class="form__campo">
-            <label for="email" class="form__label">Email</label>
+            <label for="email" class="form__label">Email:</label>
             <input
-              type="email"
               id="email"
+              type="email"
+              name="email"
               placeholder="Escribe tu correo"
               class="form__field"
             />
           </div>
           <div class="form__campo">
-            <label for="message" class="form__label">Mensaje</label>
+            <label for="message" class="form__label">Mensaje:</label>
             <textarea
-              name=""
               id="message"
+              name="mensaje"
               class="form__field form__field--textarea"
+              placeholder="Escribe tu mensaje"
             ></textarea>
           </div>
-          <div class="form__campo">
-            <input type="submit" value="Enviar" class="form__btn" id="btn" />
+          <div id="btns" class="form__campo form__campo--btns">
+            <input
+              id="btnSubmit"
+              type="submit"
+              value="Enviar"
+              class="form__btn--enviar form__btn"
+              disabled
+            />
+            <input
+              id="btnReset"
+              type="reset"
+              value="Reiniciar"
+              class="form__btn"
+            />
           </div>
         </form>
+
+        <div id="spinner" class="contacto__spinner">
+          <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="footer">
@@ -96,5 +122,8 @@
         </div>
       </div>
     </footer>
+
+    <script src="./js/app.js"></script>
+    r
   </body>
 </html>

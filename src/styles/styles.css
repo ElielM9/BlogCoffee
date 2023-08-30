@@ -99,7 +99,7 @@ img {
   color: var(--crema);
   background-color: var(--oscuro);
   padding: 1rem 3rem;
-  border: 2px solid;
+  border: 2px solid transparent;
   border-radius: 1rem;
   transition: background-color 0.3s;
 }
@@ -115,6 +115,7 @@ img {
     background-color: var(--crema);
     color: var(--oscuro);
     border-color: var(--oscuro);
+    cursor: pointer;
   }
 }
 
@@ -307,6 +308,7 @@ img {
 .tutorial__btn {
   margin-top: auto;
   background-color: var(--primario);
+  border-color: var(--crema);
 }
 
 .tutorial__btn:active {
@@ -350,6 +352,10 @@ img {
   }
 }
 
+.form__campo--btns {
+  gap: 1rem;
+}
+
 .form__label {
   flex: 0 0 3rem;
   margin: 0 1rem 0;
@@ -371,9 +377,74 @@ img {
   background-color: var(--crema);
   border: 2px solid var(--grisClaro);
   border-radius: 1rem;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.form__field:focus {
+  border-color: var(--primario);
 }
 
 .form__field--textarea {
   height: 15rem;
   resize: none;
+}
+
+.form__field--error {
+  border-color: red;
+}
+
+.form__field--error:focus {
+  border-color: red;
+}
+
+.form__error {
+  font-size: 1.6rem;
+  color: red;
+  margin: 0 1rem;
+}
+
+.form__btn--enviar {
+  background-color: var(--primario);
+  border-color: var(--primario);
+}
+
+.form__btn--enviar:active {
+  color: var(--primario);
+  background-color: var(--crema);
+}
+
+@media (hover: hover) {
+  .form__btn--enviar:hover {
+    color: var(--primario);
+    background-color: var(--crema);
+    cursor: pointer;
+  }
+}
+
+.form__btn--enviar:disabled {
+  background-color: var(--primario);
+  border-color: var(--primario);
+  color: var(--crema);
+  opacity: 0.5;
+  cursor: default;
+}
+
+.contacto__spinner {
+  display: none;
+}
+
+.contacto__spinner--activo {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.contacto__exito {
+  color: green;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1rem;
 }
