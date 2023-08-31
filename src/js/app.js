@@ -4,11 +4,13 @@ document.addEventListener(`DOMContentLoaded`, function () {
   const email = {
     nombre: ``,
     email: ``,
+    emailCC: ``,
     mensaje: ``,
   };
 
   const inputName = document.querySelector(`#name`);
   const inputEmail = document.querySelector(`#email`);
+  const inputEmailCC = document.querySelector(`#emailCC`);
   const inputMessage = document.querySelector(`#message`);
   const form = document.querySelector(`#form`);
   const btnSubmit = document.querySelector(`#btnSubmit`);
@@ -19,6 +21,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
   inputName.addEventListener(`blur`, validar);
   inputEmail.addEventListener(`blur`, validar);
+  inputEmailCC.addEventListener(`blur`, validar);
   inputMessage.addEventListener(`blur`, validar);
   form.addEventListener(`submit`, enviarEmail);
   btnReset.addEventListener(`click`, (e) => {
@@ -43,14 +46,13 @@ document.addEventListener(`DOMContentLoaded`, function () {
       // Crear una alerta
       const alertaExito = document.createElement(`P`);
       alertaExito.classList.add(`contacto__exito`);
-      alertaExito.textContent = "Mensaje enviado exitosamente";
+      alertaExito.textContent = "Mensaje envíado exitosamente";
 
       form.appendChild(alertaExito);
 
       setTimeout(() => {
         alertaExito.remove();
       }, 2000);
-
     }, 3000);
   }
 
@@ -58,7 +60,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
     const vacio = ``;
     const referencia = e.target.parentElement;
 
-    if (e.target.value.trim() === vacio) {
+    if (e.target.value.trim() === vacio && e.target.name !== `emailCC`) {
       mostrarAlerta(`El ${e.target.name} es obligatorio`, referencia);
       email[e.target.name] = ``;
       comprobarEmail();
@@ -66,7 +68,18 @@ document.addEventListener(`DOMContentLoaded`, function () {
       return;
     }
 
-    if (e.target.name === `email` && !validarEmail(e.target.value)) {
+    // Validar CC
+    if (e.target.value.trim() === vacio && e.target.name === `emailCC`) {
+      delete email.emailCC;
+      comprobarEmail();
+
+      return;
+    }
+
+    if (
+      (e.target.name === `email` || e.target.name === `emailCC`) &&
+      !validarEmail(e.target.value)
+    ) {
       mostrarAlerta(`El email no es valido`, referencia);
       email[e.target.name] = ``;
       comprobarEmail();
@@ -129,6 +142,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
     // Reiniciar el objeto
     email.nombre = ``;
     email.email = ``;
+    email.emailCC = ``;
     email.mensaje = ``;
 
     form.reset();
